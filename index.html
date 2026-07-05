@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bio Card Generator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- Controls -->
+  <div class="controls">
+    <h2>Bio Card</h2>
+
+    <div class="field">
+      <label for="line1">First line</label>
+      <input type="text" id="line1" value="HELLO" placeholder="e.g. HELLO">
+    </div>
+
+    <div class="field">
+      <label for="line2">Second line</label>
+      <input type="text" id="line2" value="WORLD" placeholder="e.g. WORLD">
+    </div>
+
+    <hr class="sep">
+
+    <div class="field">
+      <label>Font <span class="val" style="font-weight:400;font-size:10px;opacity:0.4">system</span></label>
+      <select id="fontSelect">
+        <option value="system-ui, sans-serif">System UI</option>
+        <option value="Arial Black, Gadget, sans-serif">Arial Black</option>
+        <option value="Impact, Haettenschweiler, sans-serif">Impact</option>
+        <option value="Georgia, Times New Roman, serif">Georgia</option>
+        <option value="Courier New, monospace">Courier New</option>
+        <option value="Trebuchet MS, Helvetica, sans-serif">Trebuchet MS</option>
+        <option value="Segoe UI, Helvetica Neue, sans-serif">Segoe UI</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="fontSize">Text size</label>
+      <div class="label-row">
+        <span></span>
+        <span class="val" id="fontSizeLabel">220px</span>
+      </div>
+      <input type="range" id="fontSize" min="30" max="250" value="220" step="2">
+    </div>
+
+    <div class="field toggle-field">
+      <label>
+        <span>Single line</span>
+        <span class="toggle">
+          <input type="checkbox" id="singleLineToggle">
+          <span class="toggle-slider"></span>
+        </span>
+      </label>
+    </div>
+
+    <hr class="sep">
+
+    <div class="field">
+      <label for="ratioSlider">Split ratio</label>
+      <div class="label-row">
+        <span>grid</span>
+        <span class="val" id="ratioLabel">70%</span>
+      </div>
+      <input type="range" id="ratioSlider" min="30" max="90" value="70" step="1">
+    </div>
+
+    <div class="field">
+      <label for="tiltSlider">Tilt</label>
+      <div class="label-row">
+        <span></span>
+        <span class="val" id="tiltLabel">-25</span>
+      </div>
+      <input type="range" id="tiltSlider" min="-50" max="50" value="-25" step="1">
+    </div>
+
+    <div class="field">
+      <label>Right side color</label>
+      <div class="color-row">
+        <input type="color" id="bgColor" value="#969696">
+        <span class="color-hex" id="colorHex">#969696</span>
+      </div>
+    </div>
+
+    <hr class="sep">
+
+    <div class="field">
+      <label for="bgPattern">Background pattern</label>
+      <select id="bgPattern">
+        <option value="grid">Grid</option>
+        <option value="dots">Dots</option>
+        <option value="lines">Lines</option>
+        <option value="crosshatch">Crosshatch</option>
+        <option value="solid">Solid</option>
+      </select>
+    </div>
+
+
+    <div class="field">
+      <label for="patternSize">Pattern size</label>
+      <div class="label-row">
+        <span>small</span>
+        <span class="val" id="patternSizeLabel">50px</span>
+      </div>
+      <input type="range" id="patternSize" min="8" max="80" value="50" step="1">
+    </div>
+    <div class="field toggle-field">
+      <label>
+        <span>Show grid</span>
+        <span class="toggle">
+          <input type="checkbox" id="showGrid" checked>
+          <span class="toggle-slider"></span>
+        </span>
+      </label>
+    </div>
+
+    <div class="field">
+      <label for="shadowSlider">Text shadow</label>
+      <div class="label-row">
+        <span></span>
+        <span class="val" id="shadowLabel">50%</span>
+      </div>
+      <input type="range" id="shadowSlider" min="0" max="100" value="50" step="1">
+    </div>
+
+    <hr class="sep">
+
+    <div class="field toggle-field">
+      <label>
+        <span>Show image</span>
+        <span class="toggle">
+          <input type="checkbox" id="showImageToggle" checked>
+          <span class="toggle-slider"></span>
+        </span>
+      </label>
+    </div>
+
+    <div class="field" id="radiusField">
+      <label for="radiusSlider">Image radius</label>
+      <div class="label-row">
+        <span></span>
+        <span class="val" id="radiusLabel">14px</span>
+      </div>
+      <input type="range" id="radiusSlider" min="0" max="40" value="14" step="1">
+    </div>
+
+    <div class="field" id="sizeField">
+      <label for="imageSize">Image size</label>
+      <div class="label-row">
+        <span></span>
+        <span class="val" id="imageSizeLabel">420px</span>
+      </div>
+      <input type="range" id="imageSize" min="120" max="420" value="420" step="10">
+    </div>
+
+    <div class="field" id="imageField">
+      <label>Image</label>
+      <div class="upload-area" id="uploadArea">
+        <input type="file" id="imageInput" accept="image/*">
+        <div class="icon">&#10065;</div>
+        <div class="hint" id="uploadHint">Click to upload</div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" id="downloadBtn">&#8681; PNG</button>
+      <button class="btn btn-secondary" id="resetBtn">&#8635;</button>
+    </div>
+  </div>
+
+  <!-- Preview -->
+  <div class="preview-wrap">
+    <canvas id="cardCanvas" width="1500" height="900"></canvas>
+    <div class="size-hint">1500 &times; 900 px &middot; PNG</div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
