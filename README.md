@@ -2,18 +2,18 @@
 
 ![](preview.png)
 
-Генератор визиток-карточек с диагональным фоном.  
-Пиксели, текст, клетка — всё настраивается.
+A minimal card generator with a diagonal split background.  
+Pixels, text, grid — all customizable.
 
-**Что можно менять:**
-- Текст (две строки)
-- Шрифт, размер, тень
-- Соотношение и наклон диагонали
-- Цвет правой половины
-- Узор фона (клетка, точки, линии, штриховка, сплошной) + его размер
-- Картинка (своё фото или заглушка) + скругление + размер
-- Включение/выключение всего подряд
+**What you can tweak:**
+- Two lines of text
+- Font, size, shadow
+- Split ratio and diagonal angle
+- Right side color
+- Background pattern (grid, dots, lines, crosshatch, solid) + its size
+- Image (your photo or a placeholder) + radius + size
+- Toggle everything on/off
 
-Тянется в PNG 1500×900 одной кнопкой.
+Export to 1500×900 PNG with one click.
 
-Сделано на canvas, без зависимостей.
+Built with canvas, zero dependencies.
